@@ -4,6 +4,9 @@
  */
 package co.com.adivinanumero.diseno;
 
+import java.awt.Frame;
+import javax.swing.JFrame;
+
 /**
  *
  * @author dainer
@@ -30,7 +33,6 @@ public class MensajeGameOver extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jlbl_cerrar = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -45,18 +47,6 @@ public class MensajeGameOver extends javax.swing.JDialog {
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Harrington", 0, 55)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 119, 0));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("•");
-        jLabel1.setToolTipText("");
-        jLabel1.setFocusable(false);
-        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabel1.setMaximumSize(new java.awt.Dimension(22, 35));
-        jLabel1.setMinimumSize(new java.awt.Dimension(22, 35));
-        jLabel1.setPreferredSize(new java.awt.Dimension(22, 35));
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 30, 30));
 
         jlbl_cerrar.setFont(new java.awt.Font("Harrington", 0, 55)); // NOI18N
         jlbl_cerrar.setForeground(new java.awt.Color(255, 0, 0));
@@ -127,24 +117,33 @@ public class MensajeGameOver extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jlbl_cerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbl_cerrarMouseClicked
-        this.dispose();
-    }//GEN-LAST:event_jlbl_cerrarMouseClicked
-
     private void jbtn_reintentarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_reintentarActionPerformed
+        getJFrameAbierto().dispose();
         
+        JuegoPrincipal jp = new JuegoPrincipal();
+        jp.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jbtn_reintentarActionPerformed
 
     private void jbtn_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_menuActionPerformed
-        Home ventana = new Home();
-        ventana.setVisible(true);
+        getJFrameAbierto().dispose();
+        
+        Home hm = new Home();
+        hm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jbtn_menuActionPerformed
 
+    private void jlbl_cerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbl_cerrarMouseClicked
+        getJFrameAbierto().dispose();
+       
+        this.dispose();
+    }//GEN-LAST:event_jlbl_cerrarMouseClicked
+ 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+            
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -182,9 +181,20 @@ public class MensajeGameOver extends javax.swing.JDialog {
             }
         });
     }
+    
+    private static JFrame frameAbierto = new JFrame();
+
+    public static void setJFrameAbierto(JFrame frame){
+        
+        frameAbierto = frame;
+    }
+    
+    public static JFrame getJFrameAbierto(){
+        
+        return frameAbierto;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

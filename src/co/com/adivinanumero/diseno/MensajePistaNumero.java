@@ -4,6 +4,8 @@
  */
 package co.com.adivinanumero.diseno;
 
+import co.com.adivinanumero.logica.NumeroAleatorio;
+
 /**
  *
  * @author dainer
@@ -18,6 +20,7 @@ public class MensajePistaNumero extends javax.swing.JDialog {
         initComponents();
         
         this.setLocationRelativeTo(null);
+        this.mostrarPista();
     }
 
     /**
@@ -33,7 +36,7 @@ public class MensajePistaNumero extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jlbl_cerrar = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        jlbl_pista = new javax.swing.JLabel();
         jbtn_regresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -78,12 +81,12 @@ public class MensajePistaNumero extends javax.swing.JDialog {
         jPanel2.setBackground(new java.awt.Color(69, 69, 69));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("El número a adivinar es impar");
-        jLabel5.setMaximumSize(new java.awt.Dimension(350, 32));
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 40, 350, 40));
+        jlbl_pista.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jlbl_pista.setForeground(new java.awt.Color(255, 255, 255));
+        jlbl_pista.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbl_pista.setText("El número a adivinar es impar");
+        jlbl_pista.setMaximumSize(new java.awt.Dimension(350, 32));
+        jPanel2.add(jlbl_pista, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 40, 350, 40));
 
         jbtn_regresar.setBackground(new java.awt.Color(135, 206, 235));
         jbtn_regresar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -160,12 +163,20 @@ public class MensajePistaNumero extends javax.swing.JDialog {
         });
     }
 
+    public void mostrarPista() {
+        if(NumeroAleatorio.getArregloN()[NumeroAleatorio.getNumElegido()] % 2 == 0) {
+            this.jlbl_pista.setText("El número a adivinar es par");
+        } else {
+            this.jlbl_pista.setText("El número a adivinar es impar");
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton jbtn_regresar;
     private javax.swing.JLabel jlbl_cerrar;
+    private javax.swing.JLabel jlbl_pista;
     // End of variables declaration//GEN-END:variables
 }

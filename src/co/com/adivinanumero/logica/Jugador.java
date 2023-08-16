@@ -10,4 +10,21 @@ package co.com.adivinanumero.logica;
  */
 public class Jugador {
     
+    private int vidas;
+
+    /**
+     * @return the vidas
+     */
+    public int getVidas() {
+        return vidas;
+    }
+
+    /**
+     * @param aVidas the vidas to set
+     */
+    public void setVidas(int aVidas) {
+        vidas = aVidas;
+    }
+    
+    
 }

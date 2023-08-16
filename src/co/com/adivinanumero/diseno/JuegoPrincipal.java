@@ -7,6 +7,7 @@ package co.com.adivinanumero.diseno;
 import co.com.adivinanumero.logica.LogicaJuego;
 import co.com.adivinanumero.logica.NumeroAleatorio;
 import java.util.ArrayList;
+import javax.swing.JLabel;
 
 /**
  *
@@ -24,7 +25,13 @@ public class JuegoPrincipal extends javax.swing.JFrame {
         initComponents();
         
         this.setLocationRelativeTo(null);
-        anadirNumeros();
+        try {
+            anadirNumeros();
+            MensajeGameOver.setJFrameAbierto(this);
+        } catch (Exception e) {
+            e.getMessage();
+        }
+        
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -48,9 +55,9 @@ public class JuegoPrincipal extends javax.swing.JFrame {
         jbtn9 = new javax.swing.JButton();
         jbtn8 = new javax.swing.JButton();
         jbtn7 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jlbl_C3 = new javax.swing.JLabel();
+        jlbl_C2 = new javax.swing.JLabel();
+        jlbl_C1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jbtn_menu = new javax.swing.JButton();
         jbtn_pista = new javax.swing.JButton();
@@ -259,14 +266,14 @@ public class JuegoPrincipal extends javax.swing.JFrame {
         });
         jPanel2.add(jbtn7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/corazon.png"))); // NOI18N
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 150, 30, 30));
+        jlbl_C3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/corazon.png"))); // NOI18N
+        jPanel2.add(jlbl_C3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 150, 30, 30));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/corazon.png"))); // NOI18N
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 150, 30, 30));
+        jlbl_C2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/corazon.png"))); // NOI18N
+        jPanel2.add(jlbl_C2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 150, 30, 30));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/corazon.png"))); // NOI18N
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, 30, 30));
+        jlbl_C1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/corazon.png"))); // NOI18N
+        jPanel2.add(jlbl_C1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, 30, 30));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -315,12 +322,15 @@ public class JuegoPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtn_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_menuActionPerformed
-        MensajeGameOver mgo = new MensajeGameOver(this, true);
-        mgo.setVisible(true);    
+        Home hm = new Home();
+        hm.setVisible(true);
+        
+        this.dispose();
     }//GEN-LAST:event_jbtn_menuActionPerformed
 
     private void jbtn_pistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_pistaActionPerformed
-
+        MensajePistaNumero msjp = new MensajePistaNumero(this, true);
+        msjp.setVisible(true);
     }//GEN-LAST:event_jbtn_pistaActionPerformed
 
     private void jlbl_cerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbl_cerrarMouseClicked
@@ -328,39 +338,39 @@ public class JuegoPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jlbl_cerrarMouseClicked
    
     private void jbtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn1ActionPerformed
-        log.validarEleccion(Integer.parseInt(this.jbtn1.getText()));
+        log.validarEleccion(Integer.parseInt(this.jbtn1.getText()), getLabels(), this);
     }//GEN-LAST:event_jbtn1ActionPerformed
 
     private void jbtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn2ActionPerformed
-        log.validarEleccion(Integer.parseInt(this.jbtn2.getText()));
+        log.validarEleccion(Integer.parseInt(this.jbtn2.getText()), getLabels(), this);
     }//GEN-LAST:event_jbtn2ActionPerformed
 
     private void jbtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn3ActionPerformed
-        log.validarEleccion(Integer.parseInt(this.jbtn3.getText()));
+        log.validarEleccion(Integer.parseInt(this.jbtn3.getText()), getLabels(), this);
     }//GEN-LAST:event_jbtn3ActionPerformed
 
     private void jbtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn4ActionPerformed
-        log.validarEleccion(Integer.parseInt(this.jbtn4.getText()));
+        log.validarEleccion(Integer.parseInt(this.jbtn4.getText()), getLabels(), this);
     }//GEN-LAST:event_jbtn4ActionPerformed
 
     private void jbtn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn5ActionPerformed
-        log.validarEleccion(Integer.parseInt(this.jbtn5.getText()));
+        log.validarEleccion(Integer.parseInt(this.jbtn5.getText()), getLabels(), this);
     }//GEN-LAST:event_jbtn5ActionPerformed
 
     private void jbtn6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn6ActionPerformed
-        log.validarEleccion(Integer.parseInt(this.jbtn6.getText()));
+        log.validarEleccion(Integer.parseInt(this.jbtn6.getText()), getLabels(), this);
     }//GEN-LAST:event_jbtn6ActionPerformed
 
     private void jbtn7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn7ActionPerformed
-        log.validarEleccion(Integer.parseInt(this.jbtn7.getText()));
+        log.validarEleccion(Integer.parseInt(this.jbtn7.getText()), getLabels(), this);
     }//GEN-LAST:event_jbtn7ActionPerformed
 
     private void jbtn8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn8ActionPerformed
-        log.validarEleccion(Integer.parseInt(this.jbtn8.getText()));
+        log.validarEleccion(Integer.parseInt(this.jbtn8.getText()), getLabels(), this);
     }//GEN-LAST:event_jbtn8ActionPerformed
 
     private void jbtn9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn9ActionPerformed
-        log.validarEleccion(Integer.parseInt(this.jbtn9.getText()));
+        log.validarEleccion(Integer.parseInt(this.jbtn9.getText()), getLabels(), this);
     }//GEN-LAST:event_jbtn9ActionPerformed
 
     /**
@@ -401,29 +411,35 @@ public class JuegoPrincipal extends javax.swing.JFrame {
     // ----- Metodos creados por Dainer -----
     
     private void anadirNumeros() {
+        try {
+            NumeroAleatorio.generarNumeros(9, 1, 30);
+            NumeroAleatorio.OrdenarNumeros(NumeroAleatorio.getArregloN());
+
+            int[] num = NumeroAleatorio.getArregloN();
+
+            jbtn1.setText(Integer.toString(num[0]));
+            jbtn2.setText(Integer.toString(num[1]));
+            jbtn3.setText(Integer.toString(num[2]));
+            jbtn4.setText(Integer.toString(num[3]));
+            jbtn5.setText(Integer.toString(num[4]));
+            jbtn6.setText(Integer.toString(num[5]));
+            jbtn7.setText(Integer.toString(num[6]));
+            jbtn8.setText(Integer.toString(num[7]));
+            jbtn9.setText(Integer.toString(num[8])); 
+        } catch (Exception e) {
+            e.getMessage();
+        }
+    }
+    
+    private JLabel[] getLabels() {
+        JLabel[] jlbl = { this.jlbl_C3, this.jlbl_C2, this.jlbl_C1 };
         
-        NumeroAleatorio.generarNumeros(9, 1, 30);
-        NumeroAleatorio.OrdenarNumeros(NumeroAleatorio.getArregloN());
-        
-        int[] num = NumeroAleatorio.getArregloN();
-        
-        jbtn1.setText(Integer.toString(num[0]));
-        jbtn2.setText(Integer.toString(num[1]));
-        jbtn3.setText(Integer.toString(num[2]));
-        jbtn4.setText(Integer.toString(num[3]));
-        jbtn5.setText(Integer.toString(num[4]));
-        jbtn6.setText(Integer.toString(num[5]));
-        jbtn7.setText(Integer.toString(num[6]));
-        jbtn8.setText(Integer.toString(num[7]));
-        jbtn9.setText(Integer.toString(num[8])); 
+        return jlbl;
     }
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -438,6 +454,9 @@ public class JuegoPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jbtn9;
     private javax.swing.JButton jbtn_menu;
     private javax.swing.JButton jbtn_pista;
+    private javax.swing.JLabel jlbl_C1;
+    private javax.swing.JLabel jlbl_C2;
+    private javax.swing.JLabel jlbl_C3;
     private javax.swing.JLabel jlbl_cerrar;
     // End of variables declaration//GEN-END:variables
 }
