@@ -8,22 +8,21 @@ package co.com.adivinanumero.logica;
  *
  * @author dainer
  */
-public class Jugador {
+public class NumeroElegidoPorElSistema {
     
-    private int vidas;
-    public static int puntos;
-
+    private static int num = (int) (Math.random() * (9 - 0 + 1)) + 0;
+    
     /**
-     * @return the vidas
+     * @return the numElegido
      */
-    public int getVidas() {
-        return vidas;
+    public static int getNum() {
+        return num;
     }
 
     /**
-     * @param aVidas the vidas to set
+     * @param aNum the num to set
      */
-    public void setVidas(int aVidas) {
-        vidas = aVidas;
-    } 
+    public static void setNum(int aNum) {
+        num = aNum;
+    }
 }

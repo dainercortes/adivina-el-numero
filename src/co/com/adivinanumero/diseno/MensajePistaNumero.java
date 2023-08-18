@@ -1,10 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
 package co.com.adivinanumero.diseno;
 
 import co.com.adivinanumero.logica.NumeroAleatorio;
+import co.com.adivinanumero.logica.NumeroElegidoPorElSistema;
 
 /**
  *
@@ -164,7 +161,7 @@ public class MensajePistaNumero extends javax.swing.JDialog {
     }
 
     public void mostrarPista() {
-        if(NumeroAleatorio.getArregloN()[NumeroAleatorio.getNumElegido()] % 2 == 0) {
+        if(NumeroElegidoPorElSistema.getNum() % 2 == 0) {
             this.jlbl_pista.setText("El número a adivinar es par");
         } else {
             this.jlbl_pista.setText("El número a adivinar es impar");

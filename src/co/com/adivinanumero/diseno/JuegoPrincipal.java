@@ -4,9 +4,11 @@
  */
 package co.com.adivinanumero.diseno;
 
+import co.com.adivinanumero.logica.Jugador;
 import co.com.adivinanumero.logica.LogicaJuego;
 import co.com.adivinanumero.logica.NumeroAleatorio;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JLabel;
 
 /**
@@ -16,7 +18,7 @@ import javax.swing.JLabel;
 public class JuegoPrincipal extends javax.swing.JFrame {
 
     //Instancia de objetos
-    LogicaJuego log = new LogicaJuego();
+    LogicaJuego log = new LogicaJuego();   
     
     /**
      * Creates new form JuegoPrincipal
@@ -26,8 +28,10 @@ public class JuegoPrincipal extends javax.swing.JFrame {
         
         this.setLocationRelativeTo(null);
         try {
+            MensajeGameOver.setJFrameAbierto(this);   
             anadirNumeros();
-            MensajeGameOver.setJFrameAbierto(this);
+            log.numeroDelSistema();
+            jlbl_puntos.setText("Puntos: " + Jugador.puntos);                     
         } catch (Exception e) {
             e.getMessage();
         }
@@ -58,9 +62,10 @@ public class JuegoPrincipal extends javax.swing.JFrame {
         jlbl_C3 = new javax.swing.JLabel();
         jlbl_C2 = new javax.swing.JLabel();
         jlbl_C1 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        jlbl_puntos = new javax.swing.JLabel();
         jbtn_menu = new javax.swing.JButton();
         jbtn_pista = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setFocusCycleRoot(false);
@@ -275,10 +280,11 @@ public class JuegoPrincipal extends javax.swing.JFrame {
         jlbl_C1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/corazon.png"))); // NOI18N
         jPanel2.add(jlbl_C1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, 30, 30));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Adivina el número");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, -1, -1));
+        jlbl_puntos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jlbl_puntos.setForeground(new java.awt.Color(255, 255, 255));
+        jlbl_puntos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbl_puntos.setText("Puntos: 0");
+        jPanel2.add(jlbl_puntos, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, 140, -1));
 
         jbtn_menu.setBackground(new java.awt.Color(135, 206, 235));
         jbtn_menu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -316,6 +322,11 @@ public class JuegoPrincipal extends javax.swing.JFrame {
         });
         jPanel2.add(jbtn_pista, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 270, 140, 60));
 
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Adivina el número");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, -1, -1));
+
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 570, 490));
 
         pack();
@@ -338,39 +349,39 @@ public class JuegoPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jlbl_cerrarMouseClicked
    
     private void jbtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn1ActionPerformed
-        log.validarEleccion(Integer.parseInt(this.jbtn1.getText()), getLabels(), this);
+        log.validarEleccion(Integer.parseInt(this.jbtn1.getText()), getLabels(), this.jlbl_puntos, this);
     }//GEN-LAST:event_jbtn1ActionPerformed
 
     private void jbtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn2ActionPerformed
-        log.validarEleccion(Integer.parseInt(this.jbtn2.getText()), getLabels(), this);
+        log.validarEleccion(Integer.parseInt(this.jbtn2.getText()), getLabels(), this.jlbl_puntos, this);
     }//GEN-LAST:event_jbtn2ActionPerformed
 
     private void jbtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn3ActionPerformed
-        log.validarEleccion(Integer.parseInt(this.jbtn3.getText()), getLabels(), this);
+        log.validarEleccion(Integer.parseInt(this.jbtn3.getText()), getLabels(), this.jlbl_puntos, this);
     }//GEN-LAST:event_jbtn3ActionPerformed
 
     private void jbtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn4ActionPerformed
-        log.validarEleccion(Integer.parseInt(this.jbtn4.getText()), getLabels(), this);
+        log.validarEleccion(Integer.parseInt(this.jbtn4.getText()), getLabels(), this.jlbl_puntos, this);
     }//GEN-LAST:event_jbtn4ActionPerformed
 
     private void jbtn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn5ActionPerformed
-        log.validarEleccion(Integer.parseInt(this.jbtn5.getText()), getLabels(), this);
+        log.validarEleccion(Integer.parseInt(this.jbtn5.getText()), getLabels(), this.jlbl_puntos, this);
     }//GEN-LAST:event_jbtn5ActionPerformed
 
     private void jbtn6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn6ActionPerformed
-        log.validarEleccion(Integer.parseInt(this.jbtn6.getText()), getLabels(), this);
+        log.validarEleccion(Integer.parseInt(this.jbtn6.getText()), getLabels(), this.jlbl_puntos, this);
     }//GEN-LAST:event_jbtn6ActionPerformed
 
     private void jbtn7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn7ActionPerformed
-        log.validarEleccion(Integer.parseInt(this.jbtn7.getText()), getLabels(), this);
+        log.validarEleccion(Integer.parseInt(this.jbtn7.getText()), getLabels(), this.jlbl_puntos, this);
     }//GEN-LAST:event_jbtn7ActionPerformed
 
     private void jbtn8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn8ActionPerformed
-        log.validarEleccion(Integer.parseInt(this.jbtn8.getText()), getLabels(), this);
+        log.validarEleccion(Integer.parseInt(this.jbtn8.getText()), getLabels(), this.jlbl_puntos, this);
     }//GEN-LAST:event_jbtn8ActionPerformed
 
     private void jbtn9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn9ActionPerformed
-        log.validarEleccion(Integer.parseInt(this.jbtn9.getText()), getLabels(), this);
+        log.validarEleccion(Integer.parseInt(this.jbtn9.getText()), getLabels(), this.jlbl_puntos, this);
     }//GEN-LAST:event_jbtn9ActionPerformed
 
     /**
@@ -412,20 +423,19 @@ public class JuegoPrincipal extends javax.swing.JFrame {
     
     private void anadirNumeros() {
         try {
-            NumeroAleatorio.generarNumeros(9, 1, 30);
-            NumeroAleatorio.OrdenarNumeros(NumeroAleatorio.getArregloN());
+            log.generarNumeros(9, 1, 30);
+            log.OrdenarNumeros();
 
-            int[] num = NumeroAleatorio.getArregloN();
-
-            jbtn1.setText(Integer.toString(num[0]));
-            jbtn2.setText(Integer.toString(num[1]));
-            jbtn3.setText(Integer.toString(num[2]));
-            jbtn4.setText(Integer.toString(num[3]));
-            jbtn5.setText(Integer.toString(num[4]));
-            jbtn6.setText(Integer.toString(num[5]));
-            jbtn7.setText(Integer.toString(num[6]));
-            jbtn8.setText(Integer.toString(num[7]));
-            jbtn9.setText(Integer.toString(num[8])); 
+            List<NumeroAleatorio> num = log.getNumeros();
+            jbtn1.setText(Integer.toString(num.get(0).getNumero()));
+            jbtn2.setText(Integer.toString(num.get(1).getNumero()));
+            jbtn3.setText(Integer.toString(num.get(2).getNumero()));
+            jbtn4.setText(Integer.toString(num.get(3).getNumero()));
+            jbtn5.setText(Integer.toString(num.get(4).getNumero()));
+            jbtn6.setText(Integer.toString(num.get(5).getNumero()));
+            jbtn7.setText(Integer.toString(num.get(6).getNumero()));
+            jbtn8.setText(Integer.toString(num.get(7).getNumero()));
+            jbtn9.setText(Integer.toString(num.get(8).getNumero())); 
         } catch (Exception e) {
             e.getMessage();
         }
@@ -440,7 +450,7 @@ public class JuegoPrincipal extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton jbtn1;
@@ -458,5 +468,6 @@ public class JuegoPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jlbl_C2;
     private javax.swing.JLabel jlbl_C3;
     private javax.swing.JLabel jlbl_cerrar;
+    private javax.swing.JLabel jlbl_puntos;
     // End of variables declaration//GEN-END:variables
 }

@@ -35,7 +35,7 @@ public class MensajeGameOver extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jlbl_cerrar = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        jlbl_mensaje = new javax.swing.JLabel();
         jbtn_menu = new javax.swing.JButton();
         jbtn_reintentar = new javax.swing.JButton();
 
@@ -43,6 +43,11 @@ public class MensajeGameOver extends javax.swing.JDialog {
         setMaximumSize(new java.awt.Dimension(400, 300));
         setMinimumSize(new java.awt.Dimension(400, 300));
         setUndecorated(true);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
@@ -70,11 +75,11 @@ public class MensajeGameOver extends javax.swing.JDialog {
         jPanel2.setBackground(new java.awt.Color(69, 69, 69));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Perdiste");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 40, 320, -1));
+        jlbl_mensaje.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        jlbl_mensaje.setForeground(new java.awt.Color(255, 255, 255));
+        jlbl_mensaje.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbl_mensaje.setText("Perdiste");
+        jPanel2.add(jlbl_mensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 40, 320, -1));
 
         jbtn_menu.setBackground(new java.awt.Color(135, 206, 235));
         jbtn_menu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -112,7 +117,7 @@ public class MensajeGameOver extends javax.swing.JDialog {
         });
         jPanel2.add(jbtn_reintentar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 140, 60));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 400, 270));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 400, 250));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -138,6 +143,10 @@ public class MensajeGameOver extends javax.swing.JDialog {
        
         this.dispose();
     }//GEN-LAST:event_jlbl_cerrarMouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        jlbl_mensaje.setText("Ganaste");
+    }//GEN-LAST:event_formWindowOpened
  
     /**
      * @param args the command line arguments
@@ -195,11 +204,11 @@ public class MensajeGameOver extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton jbtn_menu;
-    private javax.swing.JButton jbtn_reintentar;
+    public javax.swing.JButton jbtn_reintentar;
     private javax.swing.JLabel jlbl_cerrar;
+    public javax.swing.JLabel jlbl_mensaje;
     // End of variables declaration//GEN-END:variables
 }

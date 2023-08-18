@@ -4,72 +4,50 @@
  */
 package co.com.adivinanumero.logica;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
  *
  * @author dainer
  */
-public class NumeroAleatorio {
+public class NumeroAleatorio implements Comparable<NumeroAleatorio> {
    
-    private static int[] arregloN;
-    private static int numElegido = (int) (Math.random() * (9 - 0 + 1)) + 0;
+    private int numero;
     
     
-    public static void generarNumeros(int tamaño, int min, int max) {       
-        try {
-            //No permite numeors repettidos
-            Set<Integer> unico = new HashSet<>();
-            while (unico.size() < tamaño) {
-                int random = (int) (Math.random() * (max - min + 1)) + min;
-                unico.add(random);
-            }
-
-            int[] arreglo = new int[tamaño];
-            int x = 0;
-            for (int num : unico) {
-                arreglo[x++] = num;
-            }
-            arregloN = arreglo;
-        } catch (Exception e) {
-            e.getMessage();
-        } 
+    
+    public NumeroAleatorio(int numero)
+    {
+        this.numero = numero;
     }
     
-    public static int[] OrdenarNumeros(int[] arreglo) {
-        try {
-            //Ordena los numeros de menor a mayor con el metodo Burbuja
-            for (int i = 0; i < arreglo.length; i++) {
-                for (int j = 0; j < arreglo.length - 1; j++) {
-                    int numActual = arreglo[j];
-                    int numSiguiente = arreglo[j + 1];
-                    if (numActual > numSiguiente) {
-                        arreglo[j] = numSiguiente;
-                        arreglo[j + 1] = numActual;
-                    }
-                }
-            }  
-            arregloN = arreglo;
-        } catch (Exception e) {
-            e.getMessage();
-        }  
-        return arregloN;
+    public NumeroAleatorio()
+    {
+        
     }
 
     // --------- Metodos Get ---------
     
     /**
-     * @return the arregloN
+     * @return the numero
      */
-    public static int[] getArregloN() {
-        return arregloN;
+    public int getNumero() {
+        return this.numero;
     }
 
     /**
-     * @return the numElegido
+     * @param numero the numero to set
      */
-    public static int getNumElegido() {
-        return numElegido;
+    public void setNumero(int numero) {
+        this.numero = numero;
     }
+   
+    @Override
+    public int compareTo(NumeroAleatorio o) {
+        return Integer.compare(this.getNumero(), o.getNumero());
+    }  
 }
