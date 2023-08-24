@@ -1,7 +1,4 @@
-package co.com.adivinanumero.diseno;
-
-import co.com.adivinanumero.logica.NumeroAleatorio;
-import co.com.adivinanumero.logica.NumeroElegidoPorElSistema;
+package com.adivinanumero.diseno;
 
 /**
  *
@@ -9,11 +6,16 @@ import co.com.adivinanumero.logica.NumeroElegidoPorElSistema;
  */
 public class MensajePistaNumero extends javax.swing.JDialog {
 
+    private int numero;
+    
     /**
      * Creates new form MensajePistaNumero
      */
-    public MensajePistaNumero(java.awt.Frame parent, boolean modal) {
+    public MensajePistaNumero(java.awt.Frame parent, boolean modal, int num) {
         super(parent, modal);
+        
+        numero = num;
+        
         initComponents();
         
         this.setLocationRelativeTo(null);
@@ -37,8 +39,17 @@ public class MensajePistaNumero extends javax.swing.JDialog {
         jbtn_regresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(400, 270));
         setUndecorated(true);
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                formMouseDragged(evt);
+            }
+        });
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
@@ -95,7 +106,7 @@ public class MensajePistaNumero extends javax.swing.JDialog {
         jbtn_regresar.setFocusable(false);
         jbtn_regresar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jbtn_regresar.setPreferredSize(new java.awt.Dimension(100, 100));
-        jbtn_regresar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/img/botonLargo.png"))); // NOI18N
+        jbtn_regresar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/com/img/botonLargo.png"))); // NOI18N
         jbtn_regresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtn_regresarActionPerformed(evt);
@@ -113,10 +124,16 @@ public class MensajePistaNumero extends javax.swing.JDialog {
     }//GEN-LAST:event_jlbl_cerrarMouseClicked
 
     private void jbtn_regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_regresarActionPerformed
-        Home ventana = new Home();
-        ventana.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jbtn_regresarActionPerformed
+
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        FiveCodMover.FiveCodMoverJDialog.MousePressed(evt);
+    }//GEN-LAST:event_formMousePressed
+
+    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
+        FiveCodMover.FiveCodMoverJDialog.MouseDraggedJDialog(evt, this);
+    }//GEN-LAST:event_formMouseDragged
 
     /**
      * @param args the command line arguments
@@ -148,7 +165,7 @@ public class MensajePistaNumero extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                MensajePistaNumero dialog = new MensajePistaNumero(new javax.swing.JFrame(), true);
+                MensajePistaNumero dialog = new MensajePistaNumero(new javax.swing.JFrame(), true, 0);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -161,7 +178,7 @@ public class MensajePistaNumero extends javax.swing.JDialog {
     }
 
     public void mostrarPista() {
-        if(NumeroElegidoPorElSistema.getNum() % 2 == 0) {
+        if(numero % 2 == 0) {
             this.jlbl_pista.setText("El número a adivinar es par");
         } else {
             this.jlbl_pista.setText("El número a adivinar es impar");

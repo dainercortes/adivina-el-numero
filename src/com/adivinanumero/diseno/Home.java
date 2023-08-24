@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package co.com.adivinanumero.diseno;
+package com.adivinanumero.diseno;
 
 import java.awt.Color;
 import javax.swing.JFrame;
@@ -45,9 +45,18 @@ public class Home extends javax.swing.JFrame {
         jLabel5.setText("Adivina el número");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(500, 560));
         setMinimumSize(new java.awt.Dimension(500, 560));
         setUndecorated(true);
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                formMouseDragged(evt);
+            }
+        });
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
@@ -68,7 +77,7 @@ public class Home extends javax.swing.JFrame {
         jButton2.setFocusable(false);
         jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton2.setPreferredSize(new java.awt.Dimension(100, 100));
-        jButton2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/img/botonLargo.png"))); // NOI18N
+        jButton2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/com/img/botonLargo.png"))); // NOI18N
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, 300, -1));
 
         jbtn_Jugar.setBackground(new java.awt.Color(135, 206, 235));
@@ -81,7 +90,7 @@ public class Home extends javax.swing.JFrame {
         jbtn_Jugar.setFocusable(false);
         jbtn_Jugar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jbtn_Jugar.setPreferredSize(new java.awt.Dimension(100, 100));
-        jbtn_Jugar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/img/botonLargo.png"))); // NOI18N
+        jbtn_Jugar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/com/img/botonLargo.png"))); // NOI18N
         jbtn_Jugar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtn_JugarActionPerformed(evt);
@@ -137,6 +146,14 @@ public class Home extends javax.swing.JFrame {
     private void jlbl_cerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbl_cerrarMouseClicked
         this.dispose();
     }//GEN-LAST:event_jlbl_cerrarMouseClicked
+
+    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
+        FiveCodMover.FiveCodMoverJFrame.MouseDraggedFrame(evt, this);
+    }//GEN-LAST:event_formMouseDragged
+
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        FiveCodMover.FiveCodMoverJFrame.MousePressed(evt);
+    }//GEN-LAST:event_formMousePressed
 
     /**
      * @param args the command line arguments

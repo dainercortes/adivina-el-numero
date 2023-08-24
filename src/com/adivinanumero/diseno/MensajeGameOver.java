@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
-package co.com.adivinanumero.diseno;
+package com.adivinanumero.diseno;
 
 import java.awt.Frame;
 import javax.swing.JFrame;
@@ -12,13 +12,20 @@ import javax.swing.JFrame;
  * @author dainer
  */
 public class MensajeGameOver extends javax.swing.JDialog {
-
+    
+    JFrame frame = new JFrame();
     /**
      * Creates new form MensajeGameOver
      */
-    public MensajeGameOver(java.awt.Frame parent, boolean modal) {
+    public MensajeGameOver(java.awt.Frame parent, JFrame frm, boolean modal, String msg1, String msg2) {
         super(parent, modal);
+
+        frame = frm;
+        
         initComponents();
+        
+        this.jlbl_mensaje.setText(msg1);
+        this.jbtn_reintentar.setText(msg2);
         
         this.setLocationRelativeTo(null);
     }
@@ -40,12 +47,17 @@ public class MensajeGameOver extends javax.swing.JDialog {
         jbtn_reintentar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(400, 300));
-        setMinimumSize(new java.awt.Dimension(400, 300));
+        setMaximumSize(new java.awt.Dimension(400, 280));
+        setMinimumSize(new java.awt.Dimension(400, 280));
         setUndecorated(true);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                formMouseDragged(evt);
+            }
+        });
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
             }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -91,7 +103,7 @@ public class MensajeGameOver extends javax.swing.JDialog {
         jbtn_menu.setFocusable(false);
         jbtn_menu.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jbtn_menu.setPreferredSize(new java.awt.Dimension(100, 100));
-        jbtn_menu.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/img/botonLargo.png"))); // NOI18N
+        jbtn_menu.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/com/img/botonLargo.png"))); // NOI18N
         jbtn_menu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtn_menuActionPerformed(evt);
@@ -109,7 +121,7 @@ public class MensajeGameOver extends javax.swing.JDialog {
         jbtn_reintentar.setFocusable(false);
         jbtn_reintentar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jbtn_reintentar.setPreferredSize(new java.awt.Dimension(100, 100));
-        jbtn_reintentar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/img/botonLargo2.png"))); // NOI18N
+        jbtn_reintentar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/com/img/botonLargo2.png"))); // NOI18N
         jbtn_reintentar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtn_reintentarActionPerformed(evt);
@@ -123,15 +135,15 @@ public class MensajeGameOver extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtn_reintentarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_reintentarActionPerformed
-        getJFrameAbierto().dispose();
-        
-        JuegoPrincipal jp = new JuegoPrincipal();
-        jp.setVisible(true);
+//        frame.dispose();
+//        
+//        JuegoPrincipal jp = new JuegoPrincipal();
+//        jp.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jbtn_reintentarActionPerformed
 
     private void jbtn_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_menuActionPerformed
-        getJFrameAbierto().dispose();
+        frame.dispose();
         
         Home hm = new Home();
         hm.setVisible(true);
@@ -139,14 +151,16 @@ public class MensajeGameOver extends javax.swing.JDialog {
     }//GEN-LAST:event_jbtn_menuActionPerformed
 
     private void jlbl_cerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbl_cerrarMouseClicked
-        getJFrameAbierto().dispose();
-       
-        this.dispose();
+        System.exit(0);
     }//GEN-LAST:event_jlbl_cerrarMouseClicked
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        jlbl_mensaje.setText("Ganaste");
-    }//GEN-LAST:event_formWindowOpened
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        FiveCodMover.FiveCodMoverJDialog.MousePressed(evt);
+    }//GEN-LAST:event_formMousePressed
+
+    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
+        FiveCodMover.FiveCodMoverJDialog.MouseDraggedJDialog(evt, this);
+    }//GEN-LAST:event_formMouseDragged
  
     /**
      * @param args the command line arguments
@@ -179,7 +193,7 @@ public class MensajeGameOver extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                MensajeGameOver dialog = new MensajeGameOver(new javax.swing.JFrame(), true);
+                MensajeGameOver dialog = new MensajeGameOver(new javax.swing.JFrame(), null, true, null, null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -189,18 +203,6 @@ public class MensajeGameOver extends javax.swing.JDialog {
                 dialog.setVisible(true);
             }
         });
-    }
-    
-    private static JFrame frameAbierto = new JFrame();
-
-    public static void setJFrameAbierto(JFrame frame){
-        
-        frameAbierto = frame;
-    }
-    
-    public static JFrame getJFrameAbierto(){
-        
-        return frameAbierto;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
