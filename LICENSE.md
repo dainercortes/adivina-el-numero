@@ -3,7 +3,7 @@ Licencia MIT
 Copyright © 2023 Dainer Camilo Cortés Ramírez
 
 Por la presente se concede permiso, sin coste alguno, a cualquier persona que obtenga una copia
-de este software y archivos de documentación asociados a Adivina el Número, para tratar
+de este software y archivos de documentación asociados a (el "Software"), para tratar
 en el Software sin restricción, incluidos, entre otros, los derechos
 utilizar, copiar, modificar, fusionar, publicar, distribuir, sublicenciar y/o vender
 copias del Software y para permitir a las personas a quienes el Software es
